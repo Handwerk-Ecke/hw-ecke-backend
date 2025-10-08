@@ -649,7 +649,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    Category: Schema.Attribute.Enumeration<['Candle', 'Card', 'Model', 'Gips']>;
+    category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
+    CategoryName: Schema.Attribute.Enumeration<
+      ['Candle', 'Card', 'Model', 'Gips']
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -18,12 +18,12 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "description": {
       "type": "text",
@@ -43,6 +43,11 @@
     },
     "images": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "multiple": true,
       "required": false,
       "allowedTypes": [
@@ -50,12 +55,7 @@
         "files",
         "videos",
         "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      ]
     },
     "material": {
       "type": "string"
@@ -63,7 +63,7 @@
     "size": {
       "type": "string"
     },
-    "Category": {
+    "CategoryName": {
       "type": "enumeration",
       "enum": [
         "Candle",
@@ -74,6 +74,7 @@
     },
     "Tags": {
       "type": "customField",
+      "customField": "plugin::multi-select.multi-select",
       "default": "[]",
       "options": [
         "Geburtstag",
@@ -85,8 +86,12 @@
         "Einladung",
         "Schulanfang",
         ""
-      ],
-      "customField": "plugin::multi-select.multi-select"
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
     }
   }
 }
